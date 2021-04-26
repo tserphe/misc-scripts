@@ -1,0 +1,9 @@
+#!/bin/sh
+
+weather="/tmp/weather.png"
+getweather() { curl -s -o "$weather" wttr.in/mhe.png || exit 1 ;}
+
+# Check if weather has been downloaded within the last 15 minutes.  If it hasn't, download new image with the getweather function.
+[ $(date +%s -r "$weather") -ge $(date +%s --date="15 min ago") ] || getweather
+
+sxiv $weather

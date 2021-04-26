@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Check if there are mounted cifs
+mountpoint=$(df -t cifs --output=target 2>/dev/null | grep -i mnt)
+
+# If cifs are mounted, I try to unmount and then shutdown.
+if [ -z $mountpoint ]; then
+		sudo -A shutdown -h now
+	else
+		umountcifs 2>/dev/null && sudo -A shutdown -h now || notify-send "$mountpoint in use. Please fix and then shutdown."
+fi

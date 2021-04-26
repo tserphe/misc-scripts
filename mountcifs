@@ -1,0 +1,5 @@
+#!/bin/sh
+
+#Cmd to mount cifs
+
+sudo mount -t cifs -o credentials=/etc/.credentials,rw,uid=1000,iocharset=utf8,vers=2.0 //192.168.1.1/Preston /mnt/Preston
