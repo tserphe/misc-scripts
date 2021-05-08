@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 
 radar="/tmp/kfsd_radar.gif"
 getradar() { curl -s -o "$radar" https://radar.weather.gov/ridge/lite/KFSD_loop.gif || exit 1 ;}
