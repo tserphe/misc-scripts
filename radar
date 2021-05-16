@@ -4,6 +4,6 @@ radar="/tmp/kfsd_radar.gif"
 getradar() { curl -s -o "$radar" https://radar.weather.gov/ridge/lite/KFSD_loop.gif || exit 1 ;}
 
 # Check if radar has been downloaded within the last 15 minutes.  If it hasn't, download new image with the getradar function.
-[ $(date +%s -r "$radar") -ge $(date +%s --date="15 min ago") ] || getradar
+[ -f "$radar" ] && [ $(date +%s -r "$radar") -ge $(date +%s --date="15 min ago") ] || getradar
 
 sxiv -A 3 $radar
