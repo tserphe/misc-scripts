@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/sh
 
 weather="/tmp/weather.png"
 getweather() { curl -s -o "$weather" wttr.in/mhe.png || exit 1 ;}
